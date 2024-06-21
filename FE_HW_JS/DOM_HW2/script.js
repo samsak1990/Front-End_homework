@@ -94,8 +94,49 @@ bodyTag.append(div5);
 div5.append(newParag5, newBtn5);
 
 // Создайте кнопку и абзац в html. При нажатии на кнопку вставляйте HTML-код рядом с абзацем с использованием insertAdjacentHTML
+const div6 = document.createElement("div");
+const newBtn6 = document.createElement("button");
+const newParag6 = document.createElement("p");
 
-// Создайте кнопку и абзац в html. Для абзац задайте стили в css файле. При нажатии на кнопку выводите в консоль значение стиля (например, цвет текста) абзаца с использованием getComputedStyl
+newBtn6.innerText = "Добавить HTML рядом";
+
+newParag6.textContent = `Lorem ipsum dolor, sit amet consectetur adipisicing elit.`;
+
+const mover = () => {
+  newParag6.style.cssText = `
+    display: inline-block;
+    border: 1px solid green;
+  `;
+  newParag6.insertAdjacentHTML(
+    "afterend",
+    '<img src="cat.jpg" weight=3500px height=150px><br/> <br/>'
+  );
+  newBtn6.removeEventListener("click", mover);
+};
+
+newBtn6.addEventListener("click", mover);
+
+bodyTag.append(div6);
+div6.append(newParag6, newBtn6);
+
+// Создайте кнопку и абзац в html. Для абзаца задайте стили в css файле. При нажатии на кнопку выводите в консоль значение стиля (например, цвет текста) абзаца с использованием getComputedStyle
+
+const div7 = document.createElement("div");
+const newBtn7 = document.createElement("button");
+const newParag7 = document.createElement("p");
+
+newParag7.textContent = `Lorem ipsum dolor, sit amet consectetur adipisicing elit.`;
+newParag7.classList.add("forParagrapgSeven");
+
+newBtn7.innerText = "Получить стили азаца";
+
+newBtn7.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log(getComputedStyle(newParag7).color);
+});
+
+bodyTag.append(div7);
+div7.append(newParag7, newBtn7);
 
 /*-----------------------------------------*/
 const divAll = document.querySelectorAll("div");
