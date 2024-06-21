@@ -6,7 +6,7 @@ const newBtn1 = document.createElement("button");
 const newParag1 = document.createElement("p");
 
 newBtn1.innerText = "Изменить текст";
-newParag1.innerText = "Старый контект этого параграфа!";
+newParag1.innerText = "Старый контент этого параграфа!";
 
 newBtn1.addEventListener("click", (e) => {
   e.preventDefault();
@@ -128,7 +128,7 @@ const newParag7 = document.createElement("p");
 newParag7.textContent = `Lorem ipsum dolor, sit amet consectetur adipisicing elit.`;
 newParag7.classList.add("forParagrapgSeven");
 
-newBtn7.innerText = "Получить стили азаца";
+newBtn7.innerText = "Получить стили абзаца";
 
 newBtn7.addEventListener("click", (e) => {
   e.preventDefault();
