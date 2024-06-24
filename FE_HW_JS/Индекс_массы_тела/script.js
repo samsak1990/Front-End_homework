@@ -23,3 +23,37 @@
             ИМТ >= 40:Ожирение III степени
 
 */
+
+const inputWeight = document.querySelector("#youWeight");
+const inputHeight = document.querySelector("#youHeight");
+const btnSend = document.querySelector(".form__button");
+
+btnSend.addEventListener("click", () => {
+  const weight = Number(inputWeight.value),
+    height = Number(inputHeight.value);
+
+  if (20 <= weight && weight <= 300 && 50 <= height && height <= 300) {
+    const heightMetre = height / 100;
+    const resultIMT = calcIMT(weight, heightMetre);
+    alert(resultIMT);
+  } else {
+    alert("Введены некорректные данные");
+  }
+});
+
+function calcIMT(w, h) {
+  const IMT = (w / h ** 2).toFixed(1);
+  let res;
+  if (18.5 <= IMT && IMT < 25) {
+    res = "Нормальный вес";
+  } else if (25 <= IMT && IMT < 30) {
+    res = "Избыточный вес";
+  } else if (30 <= IMT && IMT < 35) {
+    res = "Ожирение I степени";
+  } else if (35 <= IMT && IMT < 40) {
+    res = "Ожирение II степени";
+  } else if (IMT > 40) {
+    res = "Ожирение III степени";
+  }
+  return res;
+}

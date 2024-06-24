@@ -8,8 +8,7 @@ const newParag1 = document.createElement("p");
 newBtn1.innerText = "Изменить текст";
 newParag1.innerText = "Старый контент этого параграфа!";
 
-newBtn1.addEventListener("click", (e) => {
-  e.preventDefault();
+newBtn1.addEventListener("click", () => {
   newParag1.innerText = "А вот и новый текст!";
 });
 
@@ -25,8 +24,7 @@ let count = 0;
 
 newBtn2.innerText = "Добавить элемент списка";
 
-newBtn2.addEventListener("click", (e) => {
-  e.preventDefault();
+newBtn2.addEventListener("click", () => {
   count += 1;
   const newLi = document.createElement("li");
   newLi.innerText = `Элемент # ${count}`;
@@ -47,8 +45,7 @@ newBtn3.innerText = "Добавить абзац";
 bodyTag.append(div3);
 div3.append(newBtn3);
 
-newBtn3.addEventListener("click", (e) => {
-  e.preventDefault();
+newBtn3.addEventListener("click", () => {
   flag += 1;
   const addP = document.createElement("p");
   addP.innerText = `Абзац # ${flag}`;
@@ -65,8 +62,7 @@ newParag4.textContent = `Lorem ipsum dolor, sit amet consectetur adipisicing eli
 
 newBtn4.innerText = "Изменить стиль абзаца";
 
-newBtn4.addEventListener("click", (e) => {
-  e.preventDefault();
+newBtn4.addEventListener("click", () => {
   newParag4.style.cssText = `color: blue; 
     font-weight: bold; 
     text-decoration: underline;`;
@@ -85,8 +81,7 @@ newBtn5.innerText = "Добавить стили";
 
 newParag5.textContent = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere tempore corrupti debitis sit hic, quis sed, expedita nostrum ea, reprehenderit numquam. A quia asperiores iusto sint exercitationem quidem cum numquam!`;
 
-newBtn5.addEventListener("click", (e) => {
-  e.preventDefault();
+newBtn5.addEventListener("click", () => {
   newParag5.classList.add("boldColorSize");
 });
 
@@ -130,8 +125,7 @@ newParag7.classList.add("forParagrapgSeven");
 
 newBtn7.innerText = "Получить стили абзаца";
 
-newBtn7.addEventListener("click", (e) => {
-  e.preventDefault();
+newBtn7.addEventListener("click", () => {
   console.log(getComputedStyle(newParag7).color);
 });
 
