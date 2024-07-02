@@ -86,7 +86,7 @@
 
 //   return joinList;
 // }
-// console.log("---------------FIRST TWO------------------------");
+// console.log("---------------TASK TWO------------------------");
 // console.log(mergeUserData(users, orders2));
 
 // Output:
@@ -126,8 +126,19 @@ const items = [
   { name: "Broccoli", category: "Vegetable" },
 ];
 
-function groupByCategory(items) {}
+function groupByCategory(items) {
+  const newObj = {};
+  for (let elem of items) {
+    newObj[elem.category] = items.filter((item) => {
+      return elem.category === item.category;
+    }).forEach(element => {
+      
+    });;
+  }
+  return newObj;
+}
 
+console.log("---------------TASK TWO------------------------");
 console.log(groupByCategory(items));
 // Output: { Fruit: [{ name: 'Apple' }, { name: 'Banana' }], Vegetable: [{ name: 'Carrot' }, { name: 'Broccoli' }] }
 
