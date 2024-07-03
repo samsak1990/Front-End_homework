@@ -119,27 +119,56 @@
 
 //! Написать функцию, которая принимает массив объектов и возвращает объект, где ключи — это категории продуктов, а значения — массивы продуктов в каждой категории.
 
-const items = [
-  { name: "Apple", category: "Fruit" },
-  { name: "Carrot", category: "Vegetable" },
-  { name: "Banana", category: "Fruit" },
-  { name: "Broccoli", category: "Vegetable" },
-];
+// const items = [
+//   { name: "Apple", category: "Fruit" },
+//   { name: "Carrot", category: "Vegetable" },
+//   { name: "Banana", category: "Fruit" },
+//   { name: "Broccoli", category: "Vegetable" },
+// ];
 
-function groupByCategory(items) {
-  const newObj = {};
-  for (let elem of items) {
-    newObj[elem.category] = items.filter((item) => {
-      return elem.category === item.category;
-    }).forEach(element => {
-      
-    });;
-  }
-  return newObj;
-}
+// function groupByCategory(items) {
+//   const newObj = {};
+//   items.forEach((elem) => {
+//     if (newObj[elem.category]) {
+//       newObj[elem.category].push({ name: elem.name });
+//     } else {
+//       newObj[elem.category] = [{ name: elem.name }];
+//     }
+//   });
+//   return newObj;
+// }
 
-console.log("---------------TASK TWO------------------------");
-console.log(groupByCategory(items));
+// console.log("---------------TASK TREE------------------------");
+// console.log(groupByCategory(items));
 // Output: { Fruit: [{ name: 'Apple' }, { name: 'Banana' }], Vegetable: [{ name: 'Carrot' }, { name: 'Broccoli' }] }
 
 // ! Для практики работы с DOM попробуй сделать копию этого сайта: https://keycode.info/ в скрине показано, что ненужно делать (тема события клавиатуры)
+
+const btn_cngTheme = document.querySelector(".chg_theme");
+const container = document.querySelector(".container");
+const key = document.querySelector(".body_key");
+const loc = document.querySelector(".body_location");
+const which = document.querySelector(".body_which");
+const code = document.querySelector(".body_code");
+const big_num = document.querySelector(".main__num");
+
+let click_theme_flag = false;
+
+btn_cngTheme.addEventListener("click", () => {
+  container.classList.toggle("dark");
+  btn_cngTheme.classList.toggle("light");
+  if (click_theme_flag) {
+    click_theme_flag = false;
+    btn_cngTheme.innerText = "Dark theme";
+  } else {
+    click_theme_flag = true;
+    btn_cngTheme.innerText = "Light theme";
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  key.innerText = e.key;
+  loc.innerText = e.location;
+  big_num.innerText = which.innerText = e.which;
+  code.innerText = e.code;
+});

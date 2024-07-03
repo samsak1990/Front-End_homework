@@ -4,8 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="script.js"></script>
+    <div class="container">
+      <header class="header">
+        <button class="chg_theme">Dark theme</button>
+      </header>
+      <main class="main">
+        <section class="main__big">
+          <p class="main__num">16</p>
+        </section>
+        <section class="main__blocks">
+          <div class="main__block-alone">
+            <p class="block__name head_key">event.key</p>
+            <p class="block__main body_key">Shift</p>
+          </div>
+          <div class="main__block-alone">
+            <p class="block__name head_location">event.location</p>
+            <p class="block__main body_location">1</p>
+          </div>
+          <div class="main__block-alone">
+            <p class="block__name head_which">event.which</p>
+            <p class="block__main body_which">16</p>
+          </div>
+          <div class="main__block-alone">
+            <p class="block__name head_code">event.code</p>
+            <p class="block__main body_code">ShiftLeft</p>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
