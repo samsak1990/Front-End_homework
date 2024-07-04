@@ -1,33 +1,33 @@
 //! У вас есть массив объектов, представляющих заказы. Нужно отсортировать их по дате и посчитать общую сумму заказов по каждому клиенту.
 
-// const orders = [
-//   { client: "Alice", date: "2023-05-01", amount: 250 },
-//   { client: "Bob", date: "2023-05-03", amount: 150 },
-//   { client: "Alice", date: "2023-05-02", amount: 100 },
-//   { client: "Bob", date: "2023-05-04", amount: 200 },
-// ];
+const orders = [
+  { client: "Alice", date: "2023-05-01", amount: 250 },
+  { client: "Bob", date: "2023-05-03", amount: 150 },
+  { client: "Alice", date: "2023-05-02", amount: 100 },
+  { client: "Bob", date: "2023-05-04", amount: 200 },
+];
 
-// function processOrders(orders) {
-//   const multyObj = {};
+function processOrders(orders) {
+  const multyObj = {};
 
-//   for (let person of orders) {
-//     if (multyObj[person.client]) {
-//       multyObj[person.client] += person.amount;
-//     } else {
-//       multyObj[person.client] = person.amount;
-//     }
-//   }
+  for (let person of orders) {
+    if (multyObj[person.client]) {
+      multyObj[person.client] += person.amount;
+    } else {
+      multyObj[person.client] = person.amount;
+    }
+  }
 
-//   return {
-//     sortedOrders: orders.sort((a, b) => {
-//       return Date.parse(a.date) - Date.parse(b.date);
-//     }),
-//     totalAmounts: multyObj,
-//   };
-// }
+  return {
+    sortedOrders: orders.sort((a, b) => {
+      return Date.parse(a.date) - Date.parse(b.date);
+    }),
+    totalAmounts: multyObj,
+  };
+}
 
-// console.log("---------------FIRST TASK------------------------");
-// console.log(processOrders(orders));
+console.log("---------------FIRST TASK------------------------");
+console.log(processOrders(orders));
 
 // Output:
 // {
@@ -61,33 +61,33 @@
 
 //! У вас есть два массива объектов, представляющих пользователей и их заказы. Нужно объединить эти данные по ID пользователей.
 
-// const users = [
-//   { id: 1, name: "Alice" },
-//   { id: 2, name: "Bob" },
-// ];
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+];
 
-// const orders2 = [
-//   { userId: 1, product: "Laptop" },
-//   { userId: 2, product: "Phone" },
-//   { userId: 1, product: "Keyboard" },
-// ];
+const orders2 = [
+  { userId: 1, product: "Laptop" },
+  { userId: 2, product: "Phone" },
+  { userId: 1, product: "Keyboard" },
+];
 
-// function mergeUserData(users, orders2) {
-//   const joinList = [];
+function mergeUserData(users, orders2) {
+  const joinList = [];
 
-//   for (let person of users) {
-//     joinList.push({
-//       ...person,
-//       orders: orders2.filter((elem) => {
-//         return elem.userId === person.id;
-//       }),
-//     });
-//   }
+  for (let person of users) {
+    joinList.push({
+      ...person,
+      orders: orders2.filter((elem) => {
+        return elem.userId === person.id;
+      }),
+    });
+  }
 
-//   return joinList;
-// }
-// console.log("---------------TASK TWO------------------------");
-// console.log(mergeUserData(users, orders2));
+  return joinList;
+}
+console.log("---------------TASK TWO------------------------");
+console.log(mergeUserData(users, orders2));
 
 // Output:
 // [
@@ -119,27 +119,27 @@
 
 //! Написать функцию, которая принимает массив объектов и возвращает объект, где ключи — это категории продуктов, а значения — массивы продуктов в каждой категории.
 
-// const items = [
-//   { name: "Apple", category: "Fruit" },
-//   { name: "Carrot", category: "Vegetable" },
-//   { name: "Banana", category: "Fruit" },
-//   { name: "Broccoli", category: "Vegetable" },
-// ];
+const items = [
+  { name: "Apple", category: "Fruit" },
+  { name: "Carrot", category: "Vegetable" },
+  { name: "Banana", category: "Fruit" },
+  { name: "Broccoli", category: "Vegetable" },
+];
 
-// function groupByCategory(items) {
-//   const newObj = {};
-//   items.forEach((elem) => {
-//     if (newObj[elem.category]) {
-//       newObj[elem.category].push({ name: elem.name });
-//     } else {
-//       newObj[elem.category] = [{ name: elem.name }];
-//     }
-//   });
-//   return newObj;
-// }
+function groupByCategory(items) {
+  const newObj = {};
+  items.forEach((elem) => {
+    if (newObj[elem.category]) {
+      newObj[elem.category].push({ name: elem.name });
+    } else {
+      newObj[elem.category] = [{ name: elem.name }];
+    }
+  });
+  return newObj;
+}
 
-// console.log("---------------TASK TREE------------------------");
-// console.log(groupByCategory(items));
+console.log("---------------TASK TREE------------------------");
+console.log(groupByCategory(items));
 // Output: { Fruit: [{ name: 'Apple' }, { name: 'Banana' }], Vegetable: [{ name: 'Carrot' }, { name: 'Broccoli' }] }
 
 // ! Для практики работы с DOM попробуй сделать копию этого сайта: https://keycode.info/ в скрине показано, что ненужно делать (тема события клавиатуры)
