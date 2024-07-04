@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f0f0;
+        height: 100vh;
+        padding: 20px;
+        margin: 0;
+      }
+      .card-books {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      #genre li {
+        cursor: pointer;
+      }
+
+      .book-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 300px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .book-card img {
+        max-width: 300px;
+        max-height: 500px;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .book-details {
+        margin-top: 20px;
+      }
+
+      .book-details h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .book-details p {
+        margin: 5px 0;
+        color: #555;
+      }
+
+      .book-details p strong {
+        color: #333;
+      }
+
+      .error {
+        display: none;
+        font-size: 12px;
+        color: red;
+      }
+
+      .shadow {
+        width: 100%;
+        min-height: 100px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 10px rgba(63, 117, 212, 0.7);
+        margin-bottom: 20px;
+        padding: 10px;
+      }
+
+      .bold-li {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shadow">
+      <h1>Capitalize Words</h1>
+      <form id="capitalize-form">
+        <input
+          type="text"
+          id="input-string"
+          placeholder="Enter a string"
+          required
+        />
+        <p class="error">Введите текст</p>
+        <button type="button">Capitalize</button>
+      </form>
+      <p id="result"></p>
+    </div>
+    <div class="shadow" id="forProducts">
+      <h2>Products</h2>
+    </div>
+    <div class="shadow" id="forBooks">
+      <h2>Books</h2>
+      <div id="genre"></div>
+      <div class="card-books"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
