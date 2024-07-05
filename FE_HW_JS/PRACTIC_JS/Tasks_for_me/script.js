@@ -8,22 +8,34 @@ const orders = [
 ];
 
 function processOrders(orders) {
-  const multyObj = {};
-
-  for (let person of orders) {
-    if (multyObj[person.client]) {
-      multyObj[person.client] += person.amount;
-    } else {
-      multyObj[person.client] = person.amount;
-    }
-  }
-
   return {
-    sortedOrders: orders.sort((a, b) => {
-      return Date.parse(a.date) - Date.parse(b.date);
-    }),
-    totalAmounts: multyObj,
+    sortedOrders: [
+      ...orders.sort((a, b) => {
+        return Date.parse(a.date) - Date.parse(b.date);
+      }),
+    ],
+    totalAmounts: orders.reduce((acc, item) => {
+      console.log(acc);
+      return { ...acc, [item.client]: item.amount };
+    }, {}),
   };
+
+  // const multyObj = {};
+
+  // for (let person of orders) {
+  //   if (multyObj[person.client]) {
+  //     multyObj[person.client] += person.amount;
+  //   } else {
+  //     multyObj[person.client] = person.amount;
+  //   }
+  // }
+
+  // return {
+  //   sortedOrders: orders.sort((a, b) => {
+  //     return Date.parse(a.date) - Date.parse(b.date);
+  //   }),
+  //   totalAmounts: multyObj,
+  // };
 }
 
 console.log("---------------FIRST TASK------------------------");
