@@ -15,8 +15,11 @@ function processOrders(orders) {
       }),
     ],
     totalAmounts: orders.reduce((acc, item) => {
-      console.log(acc);
-      return { ...acc, [item.client]: item.amount };
+      if (!acc[item.client]) {
+        acc[item.client] = 0;
+      }
+      acc[item.client] += item.amount;
+      return acc;
     }, {}),
   };
 
@@ -85,19 +88,26 @@ const orders2 = [
 ];
 
 function mergeUserData(users, orders2) {
-  const joinList = [];
-
-  for (let person of users) {
-    joinList.push({
-      ...person,
-      orders: orders2.filter((elem) => {
-        return elem.userId === person.id;
+  return users.map((user) => {
+    return {
+      ...user,
+      order: orders2.filter((order) => {
+        return order["userId"] === user.id;
       }),
-    });
-  }
-
-  return joinList;
+    };
+  });
+  // const joinList = [];
+  // for (let person of users)
+  //   joinList.push({
+  //     ...person,
+  //     orders: orders2.filter((elem) => {
+  //       return elem.userId === person.id;
+  //     }),
+  //   });
+  // }
+  // return joinList;
 }
+
 console.log("---------------TASK TWO------------------------");
 console.log(mergeUserData(users, orders2));
 
@@ -139,15 +149,23 @@ const items = [
 ];
 
 function groupByCategory(items) {
-  const newObj = {};
-  items.forEach((elem) => {
-    if (newObj[elem.category]) {
-      newObj[elem.category].push({ name: elem.name });
-    } else {
-      newObj[elem.category] = [{ name: elem.name }];
+  return items.reduce((acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = [];
     }
-  });
-  return newObj;
+    acc[item.category].push(item.name);
+    return acc;
+  }, {});
+
+  // const newObj = {};
+  // items.forEach((elem) => {
+  //   if (newObj[elem.category]) {
+  //     newObj[elem.category].push({ name: elem.name });
+  //   } else {
+  //     newObj[elem.category] = [{ name: elem.name }];
+  //   }
+  // });
+  // return newObj;
 }
 
 console.log("---------------TASK TREE------------------------");
