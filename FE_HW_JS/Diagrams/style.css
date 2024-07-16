@@ -1,1 +1,25 @@
-const  = 
+.center{
+    
+    margin: 0 auto;
+}
+
+canvas{
+    display: block;
+    position: relative;
+}
+
+.infoCircle{
+    position: absolute;
+    text-align: center;
+    right: 0;
+    top: 0;
+}
+
+.numInCercle{
+    color:#0F8AD7;
+    margin: 0;
+}
+
+.descInCercle{
+    color:grey;
+}
