@@ -563,3 +563,27 @@ button.calculator-btn:disabled {
 #weight:invalid {
   border: 2px solid red;
 }
+
+
+.calculator__error{
+  box-sizing: border-box;
+  height: 50px;
+  background: #DB4642;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  border-radius: 0 0 20px 20px;
+  text-align: center;
+  padding: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+.calculator__error > h2{
+  font-size: 20px;
+  color:#EDF9FB;
+}
+
+.active_error{
+  transform: translate(-50%, 0);
+}

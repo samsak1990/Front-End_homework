@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const steps = document.querySelectorAll(".step");
   const whoGender = document.querySelectorAll(".calculator-gender__item");
   const form = document.getElementById("calculator-form");
+  const blockError = document.querySelector(".calculator__error");
 
   stepsBtn.forEach((button, index) => {
     button.addEventListener("click", (e) => {
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   form.addEventListener("change", (e) => {
+    const isVisibleError = document.querySelector(".active_error");
+    if (isVisibleError) isVisibleError.classList.remove("active_error");
     toggleActiveClass(e.target.name);
   });
 
@@ -34,8 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
       `input[name="${nameStep}"]:checked`
     );
     if (!isRadioSelect) {
-      alert("Пожалуйста, сделайте выбор!");
+      blockError.classList.add("active_error");
     } else {
+      blockError.classList.remove("active_error");
       goToNextStep(stepIndex);
     }
   }
