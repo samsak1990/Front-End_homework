@@ -15,30 +15,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  form.addEventListener("change", () => {
-    toggleActiveClass();
+  form.addEventListener("change", (e) => {
+    toggleActiveClass(e.target.name);
   });
 
   function validateStep(stepIndex) {
-    if (stepIndex === 0) {
-      const isGenderSelect = document.querySelector(
-        'input[name="gender"]:checked'
-      );
-      if (!isGenderSelect) {
-        alert("Вы не выбрали Ваш пол.");
-      } else {
-        goToNextStep(stepIndex);
-      }
+    switch (stepIndex) {
+      case 0:
+        nameStep = "gender";
+        break;
+      case 1:
+        nameStep = "activity";
+        break;
+      default:
+        break;
+    }
+    const isRadioSelect = document.querySelector(
+      `input[name="${nameStep}"]:checked`
+    );
+    if (!isRadioSelect) {
+      alert("Пожалуйста, сделайте выбор!");
+    } else {
+      goToNextStep(stepIndex);
     }
   }
 
   function goToNextStep(index) {
-    steps[index].style.display = "none";
-    steps[index + 1].style.display = "block";
+    try {
+      steps[index].style.display = "none";
+      steps[index + 1].style.display = "block";
+      return true;
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
   }
 
   function toggleActiveClass(selector) {
-    const elements = document.querySelectorAll(`input[name='gender']`);
+    const elements = document.querySelectorAll(`input[name='${selector}']`);
     elements.forEach((elem) => {
       elem.parentElement.classList.remove("active");
       if (elem.checked) {
