@@ -2,17 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
   /*Step 1*/
   const stepsBtn = document.querySelectorAll(".calculator-btn");
   const steps = document.querySelectorAll(".step");
-  const whoGender = document.querySelectorAll(".calculator-gender__item");
   const form = document.getElementById("calculator-form");
   const blockError = document.querySelector(".calculator__error");
+  const inputValues = document.querySelectorAll('input[type="number"]');
 
   stepsBtn.forEach((button, index) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
-      if (index === stepsBtn.length - 1) {
-      } else {
-        validateStep(index);
-      }
+      validateStep(index);
     });
   });
 
@@ -30,8 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
       case 1:
         nameStep = "activity";
         break;
-      default:
-        break;
+      case 2:
+        validateStepTree(); /* <--- this continue */
+        return true;
     }
     const isRadioSelect = document.querySelector(
       `input[name="${nameStep}"]:checked`
@@ -43,6 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
       goToNextStep(stepIndex);
     }
   }
+
+  inputValues.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      console.log("input");
+    });
+  });
 
   function goToNextStep(index) {
     try {
@@ -68,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /*ДЗ:
 
-1. Сделать красивый вывод об ошибке: ничего не выбрано.
+
 2. Универсальная валидация последней формы
 
 */
