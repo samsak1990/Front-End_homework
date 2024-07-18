@@ -45,11 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
         nameStep = "activity";
         break;
       case 2:
-        const userData = calculateBMI();
-        if (typeof userData === "object") {
+        const userData = setUserData();
+        if (typeof userData === "object" && form.checkValidity()) {
           console.log("sent");
+          goToNextStep(stepIndex);
         } else {
-          blockError.innerHTML = "Форма заполнена неверно";
+          blockError.textContent = "Форма заполнена неверно";
           blockError.classList.add("active_error");
         }
         return;
@@ -65,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function calculateBMI() {
+  function setUserData() {
     const userData = [...inputValues].reduce((result, input) => {
       return {
         ...result,
@@ -76,14 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function goToNextStep(index) {
-    try {
-      steps[index].style.display = "none";
-      steps[index + 1].style.display = "block";
-      return true;
-    } catch (err) {
-      console.log(err);
-      return false;
-    }
+    steps[index].style.display = "none";
+    steps[index + 1].style.display = "block";
   }
 
   function toggleActiveClass(selector) {

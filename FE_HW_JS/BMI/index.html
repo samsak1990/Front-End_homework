@@ -109,15 +109,15 @@
                         <div class="data__block">
                             <div class="data__block-item">
                                 <label for="age">Ваш возраст</label>
-                                <input id="age" type="number" name="age" min="1" max="100">
+                                <input id="age" type="number" name="age" min="1" max="100" placeholder="от 0 до 100">
                             </div>
                             <div class="data__block-item">
                                 <label for="growth">Ваш рост</label>
-                                <input id="growth" type="number" name="growth" min="1" max="250">
+                                <input id="growth" type="number" name="growth" min="1" max="250" placeholder="от 50 до 300">
                             </div>
                             <div class="data__block-item">
                                 <label for="weight">Ваш вес</label>
-                                <input id="weight" type="number" name="weight" min="1" max="500">
+                                <input id="weight" type="number" name="weight" min="1" max="500" placeholder="от 20 до 300">
                             </div>
                         </div>
                         <button type="submit" id="step-result" class="calculator-btn" disabled="true">Рассчитать норму калорий</button>
@@ -126,7 +126,7 @@
             </form>
 
             <!--step 4-->
-            <div id="calculator-result" class="calculator-result" style="display: none;">
+            <div id="step-4" id="calculator-result" class="step calculator-result" style="display: none;">
                 <div class="calculator-result__title">Ваш индекс массы тела (ИМТ): </div>
                 <div class="calculator-result__imt">
                     <div>
