@@ -14,8 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const userProp = validateStep(index);
       if (userProp) {
         const BMI = calculateBMI(userProp);
+        const DCI = calculateDCI(userProp);
         resBMI.textContent = `${BMI[1]} (${BMI[0]})`;
-        resKkal.textContent = BMI[1] * 100;
+        resDCI.textContent = DCI;
       }
     });
   });
@@ -60,11 +61,26 @@ document.addEventListener("DOMContentLoaded", () => {
     return [res, BMI];
   }
 
-  function calculateDCI() {
-    /*continue this*/
+  function calculateDCI(props) {
+    //{gender: 'man', activity: '1.550', age: 29, growth: 184, weight: 75}
+    let DCI = 0;
+    if (props.gender === "man") {
+      DCI =
+        (props.weight * 10 + props.growth * 6.25 - props.age * 5 + 5) *
+        +props.activity;
+    } else {
+      DCI =
+        (props.weight * 10 + props.growth * 6.25 - props.age * 5 - 161) *
+        +props.activity;
+    }
+    return DCI;
   }
 
+  let radioChkd = {};
+
   function validateStep(stepIndex) {
+    let nameStep;
+
     switch (stepIndex) {
       case 0:
         nameStep = "gender";
@@ -72,36 +88,39 @@ document.addEventListener("DOMContentLoaded", () => {
       case 1:
         nameStep = "activity";
         break;
-      case 2:
-        const userData = setUserData();
-        if (typeof userData === "object" && form.checkValidity()) {
-          console.log("sent");
-          goToNextStep(stepIndex);
-          return userData;
-        } else {
-          blockError.textContent = "Форма заполнена неверно";
-          blockError.classList.add("active_error");
-          return false;
-        }
     }
     const isRadioSelect = document.querySelector(
       `input[name="${nameStep}"]:checked`
     );
-    if (!isRadioSelect) {
+    if (!nameStep) {
+      const userData = setUserData();
+      if (typeof userData === "object" && form.checkValidity()) {
+        goToNextStep(stepIndex);
+        return userData;
+      } else {
+        blockError.textContent = "Форма заполнена неверно";
+        blockError.classList.add("active_error");
+        return false;
+      }
+    } else if (!isRadioSelect) {
       blockError.classList.add("active_error");
     } else {
+      radioChkd[nameStep] = isRadioSelect.value;
       blockError.classList.remove("active_error");
       goToNextStep(stepIndex);
     }
   }
 
   function setUserData() {
-    const userData = [...inputValues].reduce((result, input) => {
-      return {
-        ...result,
-        [input.name]: +input.value,
-      };
-    }, {});
+    const userData = [...inputValues].reduce(
+      (result, input) => {
+        return {
+          ...result,
+          [input.name]: +input.value,
+        };
+      },
+      { ...radioChkd }
+    );
     return userData;
   }
 
