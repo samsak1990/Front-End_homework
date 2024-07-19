@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function calculateDCI(props) {
-    //{gender: 'man', activity: '1.550', age: 29, growth: 184, weight: 75}
     let DCI = 0;
     if (props.gender === "man") {
       DCI =
