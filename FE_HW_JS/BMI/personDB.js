@@ -5,11 +5,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("calculator-form");
   const blockError = document.querySelector(".calculator__error");
   let inputValues = document.querySelectorAll('input[type="number"]');
+  const resBMI = document.querySelector("#imt-value");
+  const resDCI = document.querySelector("#nc");
 
   stepsBtn.forEach((button, index) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
-      let resVal = validateStep(index);
+      const userProp = validateStep(index);
+      if (userProp) {
+        const BMI = calculateBMI(userProp);
+        resBMI.textContent = `${BMI[1]} (${BMI[0]})`;
+        resKkal.textContent = BMI[1] * 100;
+      }
     });
   });
 
@@ -36,6 +43,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  function calculateBMI(props) {
+    let BMI = (props.weight / (props.growth / 100) ** 2).toFixed(2);
+    let res;
+    if (18.5 <= BMI && BMI < 25) {
+      res = "Нормальный вес";
+    } else if (25 <= BMI && BMI < 30) {
+      res = "Избыточный вес";
+    } else if (30 <= BMI && BMI < 35) {
+      res = "Ожирение I степени";
+    } else if (35 <= BMI && BMI < 40) {
+      res = "Ожирение II степени";
+    } else if (BMI > 40) {
+      res = "Ожирение III степени";
+    }
+    return [res, BMI];
+  }
+
+  function calculateDCI() {
+    /*continue this*/
+  }
+
   function validateStep(stepIndex) {
     switch (stepIndex) {
       case 0:
@@ -49,11 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof userData === "object" && form.checkValidity()) {
           console.log("sent");
           goToNextStep(stepIndex);
+          return userData;
         } else {
           blockError.textContent = "Форма заполнена неверно";
           blockError.classList.add("active_error");
+          return false;
         }
-        return;
     }
     const isRadioSelect = document.querySelector(
       `input[name="${nameStep}"]:checked`
