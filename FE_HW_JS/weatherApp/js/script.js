@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const humidity = document.querySelector(".humidity span");
   const wind = document.querySelector(".wind span");
 
-  const resultCountry = await getGeolocation();
+  const resultGEO = await getGeolocation();
 
   searchInput.addEventListener("keydown", async (e) => {
     const value = e.target.value;
@@ -77,5 +77,5 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  displayData(resultCountry);
+  displayData(resultGEO);
 });
