@@ -19,14 +19,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function srartExecutionProcedure() {
     const inputSearchVal = document.querySelector("#userCountry").value;
-    const req = await getInfoAboutCountry(inputSearchVal);
-    if (typeof req === "string") {
+    if (inputSearchVal) {
+      const req = await getInfoAboutCountry(inputSearchVal);
+      if (typeof req === "string") {
+        modal.classList.add("active");
+        setTimeout(() => {
+          modal.classList.remove("active");
+        }, 3000);
+      } else {
+        showInfoAboutCountry(req[0]);
+      }
+    } else {
+      modal.innerText = "Вы ничего не ввели!";
       modal.classList.add("active");
       setTimeout(() => {
         modal.classList.remove("active");
       }, 3000);
-    } else {
-      showInfoAboutCountry(req[0]);
     }
     inputSearch.value = "";
   }
