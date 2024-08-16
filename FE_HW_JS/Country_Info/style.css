@@ -82,6 +82,7 @@ input {
   display: block;
   top: 0;
   transition: top 0.5s ease-in-out;
+  z-index: 999;
 }
 
 #search {
