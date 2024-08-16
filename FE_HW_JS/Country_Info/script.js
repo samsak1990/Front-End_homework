@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.classList.remove("active");
       }, 3000);
     }
+    inputSearch.blur();
     inputSearch.value = "";
   }
 
