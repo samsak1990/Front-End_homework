@@ -2,36 +2,29 @@
   "tasksToDo": [
     {
       "id": "1",
-      "title": "Новая задача",
-      "description": "Описание новой задачи",
-      "date": "2024-08-22"
+      "title": "gareg",
+      "description": "rgareg",
+      "date": "2024-08-24"
     },
     {
       "id": "2",
-      "title": "fwefew",
-      "description": "fewgew",
-      "date": "2024-08-16"
+      "title": "gaehy5e",
+      "description": "h5h5ajhr6j",
+      "date": "2024-08-29"
     },
     {
       "id": "3",
-      "title": "gwgfwg",
-      "description": "wfewfewf",
-      "date": "2024-08-29"
+      "title": "54y54y",
+      "description": "grehrt",
+      "date": "2024-09-08"
     }
   ],
-  "tasksInProgress": [
+  "tasksInProgress": [],
+  "tasksDone": [],
+  "taskCounter": [
     {
-      "id": "5",
-      "title": "Text title 5",
-      "description": "Text description 5",
-      "date": "2024-08-26"
-    },
-    {
-      "id": "6",
-      "title": "Text title 6",
-      "description": "Text description 6",
-      "date": "2024-08-26"
+      "id": "0",
+      "sum": "3"
     }
-  ],
-  "tasksDone": []
+  ]
 }

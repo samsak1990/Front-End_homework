@@ -38,19 +38,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   async function addNewTask(params) {
-    const lenghtArray = await fetch(`http://localhost:3000/tasksToDo`)
+    const lenghtArray = await fetch(`http://localhost:3000/taskCounter/0`)
       .then((response) => response.json())
-      .then((data) => data);
+      .then((data) => data.sum);
+    const currentID = String(+lenghtArray + 1);
+    updateCounderId(currentID);
     return await fetch(`http://localhost:3000/tasksToDo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: String(lenghtArray.length + 1),
+        id: currentID,
         title: params.title,
         description: params.description,
         date: params.deadline,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+
+  async function updateCounderId(newVal) {
+    return await fetch(`http://localhost:3000/taskCounter/0`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sum: newVal,
       }),
     })
       .then((response) => response.json())
