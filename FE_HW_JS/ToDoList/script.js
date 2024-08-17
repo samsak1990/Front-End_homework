@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  async function getTasks() {
+  async function getAndShowTasks() {
     for (let list of setLists) {
       const tasks = await fetch(`http://localhost:3000/${list}`)
         .then((response) => response.json())
@@ -46,5 +46,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  getTasks();
+  getAndShowTasks();
 });

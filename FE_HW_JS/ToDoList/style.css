@@ -6,7 +6,7 @@ body {
 }
 
 :root {
-  --bg-button: #4caf51;
+  --bg-button: #8dda91;
   --bg-list: #d6d6d6;
 }
 
@@ -22,6 +22,10 @@ body {
   color: white;
   padding: 10px;
   border-radius: 5px;
+}
+
+.addTask:hover {
+  outline: 1px solid green;
 }
 
 .tasksBoxes {
