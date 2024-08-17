@@ -9,12 +9,53 @@ document.addEventListener("DOMContentLoaded", () => {
   const setLists = ["tasksToDo", "tasksInProgress", "tasksDone"];
 
   addTaskButton.addEventListener("click", () => {
-    const closeModalButton = document.querySelector("#modal__close");
     modalWindow.classList.add("wrapper_modal_active");
+    const closeModalButton = document.querySelector("#modal__close");
+    const modelForm = document.querySelector(".modal__form");
+
+    modelForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = {
+        title: e.target[1].value,
+        description: e.target[2].value,
+        deadline: e.target[3].value,
+      };
+      addNewTask(data);
+    });
+
     closeModalButton.addEventListener("click", () => {
       modalWindow.classList.remove("wrapper_modal_active");
     });
   });
+
+  listDone.addEventListener("click", (e) => {
+    const element = e.target;
+    const ID_del = element.parentElement.querySelector("#taskID").textContent;
+    if (element.className === "delete_icon") {
+      element.parentElement.remove();
+      deleteTask(ID_del);
+    }
+  });
+
+  async function addNewTask(params) {
+    const lenghtArray = await fetch(`http://localhost:3000/tasksToDo`)
+      .then((response) => response.json())
+      .then((data) => data);
+    return await fetch(`http://localhost:3000/tasksToDo`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: String(lenghtArray.length + 1),
+        title: params.title,
+        description: params.description,
+        date: params.deadline,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
 
   async function getAndShowTasks() {
     for (let list of setLists) {
@@ -58,17 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .catch((err) => {
+        console.log("Ошибка удаления записи: ", err);
+      });
   }
-
-  listDone.addEventListener("click", (e) => {
-    const element = e.target;
-    const ID_del = element.parentElement.querySelector("#taskID").textContent;
-    if (element.className === "delete_icon") {
-      element.parentElement.remove();
-      deleteTask(ID_del);
-    }
-  });
 
   getAndShowTasks();
 });
