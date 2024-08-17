@@ -34,12 +34,13 @@ body {
   gap: 20px;
 }
 
-.tasksBoxes div {
+.tasksBoxes > div {
   position: relative;
   text-align: left;
   background: var(--bg-list);
   padding: 20px 5px 5px 5px;
-  flex-basis: 200px;
+  min-width: 250px;
+  flex-basis: 300px;
   flex-grow: 1;
   min-height: 500px;
   border-radius: 5px;
@@ -48,13 +49,14 @@ body {
 .tasksBoxes h2 {
   font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .listOfTasks {
   position: absolute;
   background: white;
   width: calc(100% - 10px);
-  height: calc(100% - 25px);
+  height: calc(100% - 75px);
   padding: 5px;
   overflow-y: scroll;
   overflow-x: hidden;

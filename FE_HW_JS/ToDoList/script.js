@@ -40,7 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   nameAddList === listDone
                     ? "<span class=delete_icon></span>"
                     : ""
-                }
+                } <span id='taskID' style='display:none !important'>${
+          task.id
+        }</span>
                   <h3 class="task_title">${task.title}</h3>
                   <p class="task_text">${task.description}</p>
                   <p class="task_deadline">
@@ -50,6 +52,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
+
+  async function deleteTask(id) {
+    await fetch(`http://localhost:3000/tasksDone/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }
+
+  listDone.addEventListener("click", (e) => {
+    const element = e.target;
+    const ID_del = element.parentElement.querySelector("#taskID").textContent;
+    if (element.className === "delete_icon") {
+      element.parentElement.remove();
+      deleteTask(ID_del);
+    }
+  });
 
   getAndShowTasks();
 });
