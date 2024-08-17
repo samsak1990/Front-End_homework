@@ -61,10 +61,22 @@ body {
 }
 
 .listOfTasks li {
+  position: relative;
   width: 100%;
   padding: 5px;
   border: 1px solid var(--bg-list);
   margin-bottom: 10px;
+}
+
+.delete_icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background: url("./icon_del.png") center / contain no-repeat;
+  cursor: pointer;
 }
 
 .task_title {

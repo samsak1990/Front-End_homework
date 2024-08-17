@@ -36,6 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let task of tasks) {
         nameAddList.innerHTML += `
                 <li>
+                ${
+                  nameAddList === listDone
+                    ? "<span class=delete_icon></span>"
+                    : ""
+                }
                   <h3 class="task_title">${task.title}</h3>
                   <p class="task_text">${task.description}</p>
                   <p class="task_deadline">
