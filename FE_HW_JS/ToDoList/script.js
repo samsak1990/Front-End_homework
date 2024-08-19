@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const listDone = document.querySelector(".list_done");
   const setLists = ["tasksToDo", "tasksInProgress", "tasksDone"];
 
+  const lists = document.querySelectorAll(".listOfTasks");
+
+  let startUl = null;
+  let targetUl = null;
+
   addTaskButton.addEventListener("click", () => {
     modalWindow.classList.add("wrapper_modal_active");
     const closeModalButton = document.querySelector("#modal__close");
@@ -122,14 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //Drag part
-  const lists = document.querySelectorAll(".listOfTasks");
-  const todolist = document.querySelector(".list_toDo");
-  const progressBox = document.querySelector(".box__inProgress");
-  const doneList = document.querySelector(".list_done");
-  const listProgress = document.querySelector(".list_inProgress");
-
-  let startUl = null;
-  let targetUl = null;
 
   lists.forEach((list) => {
     list.addEventListener("dragstart", (e) => {
