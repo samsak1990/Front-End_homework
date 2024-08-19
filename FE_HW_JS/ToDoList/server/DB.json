@@ -23,21 +23,20 @@
       "title": "New tast for Me",
       "description": "Desc",
       "date": "2024-08-30"
+    },
+    {
+      "id": "5",
+      "title": "yh",
+      "description": "rjrst6jh",
+      "date": "2024-08-15"
     }
   ],
   "tasksInProgress": [],
-  "tasksDone": [
-    {
-      "id": "4",
-      "title": "New tast for Me",
-      "description": "Desc",
-      "date": "2024-08-30"
-    }
-  ],
+  "tasksDone": [],
   "taskCounter": [
     {
       "id": "0",
-      "sum": "4"
+      "sum": "5"
     }
   ]
 }

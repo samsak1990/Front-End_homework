@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       for (let task of tasks) {
         nameAddList.innerHTML += `
-                <li class='task'>
+                <li class='task' draggable="true">
                 ${
                   nameAddList === listDone
                     ? "<span class=delete_icon></span>"
@@ -120,6 +120,46 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Ошибка удаления записи: ", err);
       });
   }
+
+  //Drag part
+  const lists = document.querySelectorAll(".listOfTasks");
+  const todolist = document.querySelector(".list_toDo");
+  const progressBox = document.querySelector(".box__inProgress");
+  const doneList = document.querySelector(".list_done");
+  const listProgress = document.querySelector(".list_inProgress");
+
+  let startUl = null;
+  let targetUl = null;
+
+  lists.forEach((list) => {
+    list.addEventListener("dragstart", (e) => {
+      if (e.target.tagName === "LI") {
+        startUl = e.target;
+      }
+    });
+
+    list.addEventListener("dragover", (e) => {
+      e.preventDefault();
+    });
+
+    list.addEventListener("drop", (e) => {
+      targetUl = e.target;
+      if (startUl.parentElement.id === "todo" && targetUl.id === "done") {
+      } else if (
+        startUl.parentElement.id !== targetUl.id &&
+        targetUl.tagName === "UL"
+      ) {
+        if (startUl.parentElement.id === "done") {
+          startUl.querySelector(".delete_icon").remove();
+        } else if (targetUl.id === "done") {
+          startUl.innerHTML += "<span class=delete_icon></span>";
+        }
+        targetUl.appendChild(startUl);
+      }
+    });
+  });
+
+  async function overwritingTasks(params) {}
 
   getAndShowTasks();
 });
