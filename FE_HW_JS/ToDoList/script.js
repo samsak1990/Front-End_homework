@@ -159,9 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function overwritingTasks(task, whereTo) {
     const data = await processGet(task);
-    if (await processPost(whereTo, data)) {
-      await processDel(task);
-    }
+    await processPost(whereTo, data);
+    await processDel(task);
   }
 
   function processGet(task) {
