@@ -1,34 +1,16 @@
 {
   "tasksToDo": [
     {
-      "id": "1",
-      "title": "gareg",
-      "description": "rgareg",
-      "date": "2024-08-24"
+      "id": "9",
+      "title": "New task 22",
+      "description": "RGTRHBTRNT",
+      "date": "2024-08-21"
     },
     {
-      "id": "2",
-      "title": "gaehy5e",
-      "description": "h5h5ajhr6j",
-      "date": "2024-08-29"
-    },
-    {
-      "id": "3",
-      "title": "54y54y",
-      "description": "grehrt",
+      "id": "11",
+      "title": "TR875UIE57U",
+      "description": "JDJYJFK",
       "date": "2024-09-08"
-    },
-    {
-      "id": "4",
-      "title": "New tast for Me",
-      "description": "Desc",
-      "date": "2024-08-30"
-    },
-    {
-      "id": "5",
-      "title": "yh",
-      "description": "rjrst6jh",
-      "date": "2024-08-15"
     }
   ],
   "tasksInProgress": [],
@@ -36,7 +18,7 @@
   "taskCounter": [
     {
       "id": "0",
-      "sum": "5"
+      "sum": "12"
     }
   ]
 }

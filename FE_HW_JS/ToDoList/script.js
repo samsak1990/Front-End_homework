@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => data)
       .catch((err) => {
         console.log("Ошибка удаления записи: ", err);
       });
@@ -144,22 +144,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
     list.addEventListener("drop", (e) => {
       targetUl = e.target;
-      if (startUl.parentElement.id === "todo" && targetUl.id === "done") {
+      if (
+        startUl.parentElement.id === "tasksToDo" &&
+        targetUl.id === "tasksDone"
+      ) {
       } else if (
         startUl.parentElement.id !== targetUl.id &&
         targetUl.tagName === "UL"
       ) {
-        if (startUl.parentElement.id === "done") {
+        if (startUl.parentElement.id === "tasksDone") {
           startUl.querySelector(".delete_icon").remove();
-        } else if (targetUl.id === "done") {
-          startUl.innerHTML += "<span class=delete_icon></span>";
         }
-        targetUl.appendChild(startUl);
+        overwritingTasks(startUl, targetUl);
       }
     });
   });
 
-  async function overwritingTasks(params) {}
+  async function overwritingTasks(task, whereTo) {
+    const data = await processGet(task);
+    if (await processPost(whereTo, data)) {
+      await processDel(task);
+    }
+  }
+
+  function processGet(task) {
+    return fetch(
+      `http://localhost:3000/${task.parentElement.id}/${
+        task.querySelector("#taskID").textContent
+      }`
+    )
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+
+  function processPost(whereTo, data) {
+    return fetch(`http://localhost:3000/${whereTo.id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: data.id,
+        title: data.title,
+        description: data.description,
+        date: data.date,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+
+  function processDel(taskItem) {
+    return fetch(
+      `http://localhost:3000/${taskItem.parentElement.id}/${
+        taskItem.querySelector("#taskID").textContent
+      }`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => data)
+      .catch((err) => {
+        console.log("Ошибка удаления записи: ", err);
+      });
+  }
 
   getAndShowTasks();
 });
