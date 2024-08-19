@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       for (let task of tasks) {
         nameAddList.innerHTML += `
-                <li>
+                <li class='task'>
                 ${
                   nameAddList === listDone
                     ? "<span class=delete_icon></span>"

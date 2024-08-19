@@ -17,14 +17,27 @@
       "title": "54y54y",
       "description": "grehrt",
       "date": "2024-09-08"
+    },
+    {
+      "id": "4",
+      "title": "New tast for Me",
+      "description": "Desc",
+      "date": "2024-08-30"
     }
   ],
   "tasksInProgress": [],
-  "tasksDone": [],
+  "tasksDone": [
+    {
+      "id": "4",
+      "title": "New tast for Me",
+      "description": "Desc",
+      "date": "2024-08-30"
+    }
+  ],
   "taskCounter": [
     {
       "id": "0",
-      "sum": "3"
+      "sum": "4"
     }
   ]
 }

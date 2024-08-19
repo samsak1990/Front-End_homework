@@ -1,5 +1,9 @@
 @import url("./reset.css");
 
+li::marker{
+  content:'';
+  display: none;
+}
 body {
   font-size: 16px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -148,4 +152,13 @@ body {
   height: 25px;
   background: url("./icon.png") center / contain no-repeat;
   cursor: pointer;
+}
+
+.dragElem{
+  position: absolute !important;
+  z-index: 1000 !important;
+  background: white !important;
+  outline: 1px solid var(--bg-button) !important;
+  width: 300px !important;
+  padding: 5px;
 }

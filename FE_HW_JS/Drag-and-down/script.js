@@ -9,7 +9,7 @@ box.addEventListener("mousedown", (event) => {
   let shiftY = event.clientY - box.getBoundingClientRect().top;
   let currentDroppable = null;
 
-  moveTo(event.pageX, event.pageX);
+  moveAt(event.pageX, event.pageX);
 
   function moveAt(x, y) {
     box.style.left = x - shiftX + "px";
