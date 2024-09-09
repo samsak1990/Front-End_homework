@@ -1,7 +1,7 @@
 @import url("./reset.css");
 
-li::marker{
-  content:'';
+li::marker {
+  content: "";
   display: none;
 }
 body {
@@ -72,6 +72,7 @@ body {
   padding: 5px;
   border: 1px solid var(--bg-list);
   margin-bottom: 10px;
+  cursor: move;
 }
 
 .delete_icon {
@@ -154,11 +155,6 @@ body {
   cursor: pointer;
 }
 
-.dragElem{
-  position: absolute !important;
-  z-index: 1000 !important;
-  background: white !important;
+.dragElem {
   outline: 1px solid var(--bg-button) !important;
-  width: 300px !important;
-  padding: 5px;
 }

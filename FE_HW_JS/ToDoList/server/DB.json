@@ -1,43 +1,32 @@
 {
   "tasksToDo": [
     {
-      "id": "1",
-      "title": "gareg",
-      "description": "rgareg",
-      "date": "2024-08-24"
-    },
-    {
-      "id": "2",
-      "title": "gaehy5e",
-      "description": "h5h5ajhr6j",
-      "date": "2024-08-29"
-    },
-    {
-      "id": "3",
-      "title": "54y54y",
-      "description": "grehrt",
-      "date": "2024-09-08"
-    },
-    {
-      "id": "4",
-      "title": "New tast for Me",
-      "description": "Desc",
-      "date": "2024-08-30"
+      "id": "15",
+      "title": "Получить рекомендации по выполнению ДЗ",
+      "description": "Уточнить ряд интересующих вопросов.",
+      "date": "2024-08-23"
     }
   ],
-  "tasksInProgress": [],
+  "tasksInProgress": [
+    {
+      "id": "14",
+      "title": "Отправить код на проверку!",
+      "description": "Отправить код на проверку",
+      "date": "2024-08-22"
+    }
+  ],
   "tasksDone": [
     {
-      "id": "4",
-      "title": "New tast for Me",
-      "description": "Desc",
-      "date": "2024-08-30"
+      "id": "13",
+      "title": "Моя первая задача №1",
+      "description": "Разработать программу для контроля за выполнением задач",
+      "date": "2024-08-20"
     }
   ],
   "taskCounter": [
     {
       "id": "0",
-      "sum": "4"
+      "sum": "17"
     }
   ]
 }
