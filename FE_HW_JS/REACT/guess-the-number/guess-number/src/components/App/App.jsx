@@ -51,7 +51,7 @@ export default function App() {
   return (
     <div className="App">
       <h1 className="titleGame">Guess the number</h1>
-      <input type="text" className="inputNum" value={numberUser} placeholder='Enter you number' onChange={handleChange} required/>
+      <input type="text" className="inputNum" value={numberUser} placeholder='Enter your number' onChange={handleChange} required/>
       <button className="checkBtn" onClick={+numberUser ? handleClick : handleError }>{textButton}</button>
       {messageBox}
       <Log events={loggingList} />
