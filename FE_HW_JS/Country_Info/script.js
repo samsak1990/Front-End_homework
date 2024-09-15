@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 3000);
     }
     inputSearch.blur();
-    inputSearch.value = "";
+    // inputSearch.value = "";
   }
 
   function getInfoAboutCountry(country) {

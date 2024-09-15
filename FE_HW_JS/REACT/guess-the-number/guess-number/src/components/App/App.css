@@ -1,0 +1,25 @@
+.App{
+  inset: 0;
+  text-align: center;
+  /* border: 1px solid red; */
+}
+
+.titleGame{
+  color:#94d1b4;
+  font-size: 57px;
+}
+
+.inputNum{
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 28px;
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.checkBtn{
+  font-size: 25px;
+
+}
